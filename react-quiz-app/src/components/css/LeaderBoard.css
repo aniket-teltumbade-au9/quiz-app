@@ -14,8 +14,14 @@
 }
 
 .leaderboard .user {
-  margin: 17px 10% 0px 10%;
+  margin: 7px 8% 0px 8%;
   font-size: 20px;
+  padding: 5px 10px;
+}
+
+.leaderboard .user:hover {
+  background-color: #ffdf6c;
+  border-radius: 20px;
 }
 
 .leaderboard .user img {
@@ -32,11 +38,11 @@
 }
 
 .leaderboard-header {
-  padding: 30px 10% 15px 10%;
+  padding: 20px 10% 10px 10%;
 }
 
 .leaderboard .profile {
-  height: 80px;
+  height: 70px;
 }
 
 .leaderboard .profile .profile-text {
@@ -53,15 +59,18 @@
 
 .leaderboard .profile h5 {
   color: #f8f9fa;
+  font-size: 30px;
 }
 
 .leaderboard .profile p {
   margin-top: 15px;
   margin-left: 0px;
+  font-size: 17px;
 }
 
 .leaderboard .position p {
   font-size: 17px;
+  line-height: 20px;
 }
 
 .leaderboard .position b {
@@ -69,7 +78,8 @@
 }
 
 .leaderboard-footer {
-  height: 400px;
+  height: 410px;
+  padding-top: 5px;
 }
 
 /* Scroll Bar */

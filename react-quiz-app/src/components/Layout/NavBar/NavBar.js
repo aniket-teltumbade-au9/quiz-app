@@ -1,13 +1,19 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import * as actions from "../../../actionsFiles/apiActions";
 import "../../css/NavBar.css";
 
-export default class NavBar extends Component {
+class NavBar extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light">
         <div className="container-fluid">
-          <Link to="/" className="navbar-brand">
+          <Link
+            onClick={(e) => this.props.dispatch(actions.setLoaded(false))}
+            to="/"
+            className="navbar-brand"
+          >
             <b>QuizUp</b>
           </Link>
           <button
@@ -48,3 +54,9 @@ export default class NavBar extends Component {
     );
   }
 }
+
+function mapStatetoProps(state) {
+  return state;
+}
+
+export default connect(mapStatetoProps)(NavBar);

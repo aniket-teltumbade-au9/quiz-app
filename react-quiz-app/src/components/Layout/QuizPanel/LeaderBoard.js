@@ -38,13 +38,14 @@ class LeaderBoard extends Component {
     );
   }
   makeProfile = (user) => {
+    const clickHandle = (user) => {
+      this.setState({
+        user: user,
+      });
+    };
     return (
       <div
-        onClick={(e) =>
-          this.setState({
-            user: user,
-          })
-        }
+        onClick={(e) => clickHandle(user)}
         type="button"
         className="user d-flex justify-content-between"
       >

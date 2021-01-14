@@ -15,7 +15,7 @@ class QuizPanel extends Component {
     } = this.props;
     this.props.dispatch(action.getQuiz(params.id));
     this.props.dispatch(action.getGlobalLeaderBoard());
-    this.props.dispatch(action.setLoaded());
+    this.props.dispatch(action.setLoaded(true));
   }
   render() {
     const {
@@ -32,7 +32,12 @@ class QuizPanel extends Component {
         ) : (
           <div className="row">
             <div className="col-8">
-              <QuizBoard quiz={quizList} />
+              {
+                <QuizBoard
+                  quiz={quizList.results}
+                  params={this.props.match.params}
+                />
+              }
             </div>
             <div className="col-4">
               <LeaderBoard users={this.handlerFunction(gLeaderboard)} />

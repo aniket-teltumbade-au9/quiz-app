@@ -6,10 +6,37 @@ import "../../css/Home.css";
 
 class Home extends Component {
   getQuizFromApi = (e) => {
-    const category = e.target.name;
-    this.props.dispatch(action.getQuiz(category));
+    const id = e.target.name;
+    this.props.dispatch(action.getQuiz(id));
+  };
+  makeQuiz = (name, id) => {
+    return (
+      <li>
+        <b>QuizUP :</b>
+        <Link to={`/quiz/${id}`} name={id} onClick={this.getQuizFromApi}>
+          {name}
+        </Link>
+      </li>
+    );
   };
   render() {
+    const category = [
+      "General Knowledge",
+      "Entertainment: Books",
+      "Entertainment: Film",
+      "Entertainment: Music",
+      "Entertainment: Musicals & Theatres",
+      "Entertainment: Television",
+      "Entertainment: Video Games",
+      "Entertainment: Board Games",
+      "Science & Nature",
+      "Science: Computers",
+      "Science: Mathematics",
+      "Mythology",
+      "Sports",
+      "Geoghaphy",
+      "History",
+    ];
     return (
       <div className="container home">
         <div className="header-area">
@@ -27,48 +54,11 @@ class Home extends Component {
                 <div className="quiz-heading">
                   <h4>Latest Quizzes</h4>
                 </div>
-                <div className="quiz-list">
+                <div className="quiz-list overflow-auto">
                   <ul>
-                    <li>
-                      <b>QuizUP :</b>
-                      <Link
-                        to="/quiz/linux"
-                        name="linux"
-                        onClick={this.getQuizFromApi}
-                      >
-                        Linux based quiz
-                      </Link>
-                    </li>
-                    <li>
-                      <b>QuizUP :</b>
-                      <Link
-                        to="/quiz/devops"
-                        name="docker"
-                        onClick={this.getQuizFromApi}
-                      >
-                        DevOps based quiz
-                      </Link>
-                    </li>
-                    <li>
-                      <b>QuizUP :</b>
-                      <Link
-                        to="/quiz/docker"
-                        name="docker"
-                        onClick={this.getQuizFromApi}
-                      >
-                        Docker based quiz
-                      </Link>
-                    </li>
-                    <li>
-                      <b>QuizUP :</b>
-                      <Link
-                        onClick={this.getQuizFromApi}
-                        name="random"
-                        to="/quiz/random"
-                      >
-                        Random quiz
-                      </Link>
-                    </li>
+                    {category.map((cat, index) =>
+                      cat !== "Arts" ? this.makeQuiz(cat, index + 9) : null
+                    )}
                   </ul>
                 </div>
               </div>

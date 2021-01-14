@@ -1,11 +1,5 @@
-const baseURL = "https://quizapi.io/api/v1/questions";
-const apiKey = "cyc3NBjsPYqpAVUL5NLdcxMx9W8fQ6Pr37JcW6JD";
-
-export const getQuiz = (category) => {
-  if (category === "random") {
-    category = "";
-  }
-  const completeURL = `${baseURL}?apiKey=${apiKey}&category=${category}&limit=10`;
+export const getQuiz = (id) => {
+  const completeURL = `https://opentdb.com/api.php?amount=10&category=${id}&difficulty=easy&type=multiple`;
   const response = fetch(completeURL, { method: "GET" }).then((res) =>
     res.json()
   );
@@ -27,8 +21,9 @@ export const getGlobalLeaderBoard = () => {
   };
 };
 
-export const setLoaded = () => {
+export const setLoaded = (check) => {
   return {
     type: "LOADED",
+    payload: check,
   };
 };

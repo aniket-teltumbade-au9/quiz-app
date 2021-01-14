@@ -12,7 +12,7 @@ const quizReducer = (state = initialState, action) => {
       return { ...state, gLeaderboard: action.payload, lbLoaded: true };
 
     case "LOADED":
-      return { ...state, isLoaded: true };
+      return { ...state, isLoaded: action.payload };
 
     default:
       return state;

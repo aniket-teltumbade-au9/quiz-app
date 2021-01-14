@@ -2,17 +2,29 @@ import React, { useState } from "react";
 import Quiz from "./Quiz";
 import "../../../css/Quiz.css";
 
-const FillQuiz = ({ quiz }) => {
+const FillQuiz = ({ quiz, random, setTotalPoints }) => {
   const [currentPage, setCurrentPage] = useState(0);
+  const [points, setPoints] = useState(0);
 
   const next = currentPage + 1;
   const prev = next - 1;
   const currentQuiz = quiz.slice(prev, next);
 
+  const onClickHandler = (currentPage) => {
+    setCurrentPage(currentPage);
+  };
+
+  console.log(points);
   return (
     <div className="fill-quiz">
-      <Quiz currentQuiz={currentQuiz} currentPage={currentPage} />
-      <div className="buttons row">
+      <Quiz
+        currentQuiz={currentQuiz}
+        currentPage={currentPage}
+        random={random[currentPage]}
+        setPoints={setPoints}
+        points={points}
+      />
+      <div className="buttons">
         <div className="btn-div col">
           {currentPage > 0 ? (
             <button
@@ -27,13 +39,18 @@ const FillQuiz = ({ quiz }) => {
           <div className="d-flex justify-content-end">
             {currentPage < 9 ? (
               <button
-                onClick={() => setCurrentPage(currentPage + 1)}
+                onClick={() => onClickHandler(currentPage + 1)}
                 className="mybtn next-button"
               >
                 Next
               </button>
             ) : (
-              <button className="mybtn submit-button">Submit</button>
+              <button
+                onClick={(e) => setTotalPoints(points)}
+                className="mybtn submit-button"
+              >
+                Submit
+              </button>
             )}
           </div>
         </div>
