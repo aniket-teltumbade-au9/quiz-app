@@ -1,3 +1,5 @@
+const myApi = "http://quiz-app-data.herokuapp.com/";
+
 export const getQuiz = (id) => {
   const completeURL = `https://opentdb.com/api.php?amount=10&category=${id}&difficulty=easy&type=multiple`;
   const response = fetch(completeURL, { method: "GET" }).then((res) =>
@@ -9,21 +11,32 @@ export const getQuiz = (id) => {
   };
 };
 
-const leaderBoardApi = "http://quiz-app-data.herokuapp.com/global_ranking";
-
 export const getGlobalLeaderBoard = () => {
-  const response = fetch(leaderBoardApi, { method: "GET" }).then((res) =>
-    res.json()
-  );
+  const response = fetch(`${myApi}global_ranking`, {
+    method: "GET",
+  }).then((res) => res.json());
   return {
     type: "GLOBAL_LEADERBOARD",
     payload: response,
   };
 };
 
-export const setLoaded = (check) => {
+export const getUsers = () => {
+  const response = fetch(`${myApi}users`, {
+    method: "GET",
+  }).then((res) => res.json());
   return {
-    type: "LOADED",
-    payload: check,
+    type: "USERS",
+    payload: response,
+  };
+};
+
+export const setUser = (user) => {
+  return {
+    type: "AUTH_LOGIN",
+    payload: {
+      token: "jhfghcfgjcfgc",
+      user: user,
+    },
   };
 };
