@@ -48,12 +48,84 @@ export const getUsers = () => {
   };
 };
 
-export const setUser = (user) => {
+export const setUser = (user, token) => {
+  if (!token) {
+    token = "jvgvhv";
+  }
   return {
     type: "AUTH_LOGIN",
     payload: {
-      token: "jhfghcfgjcfgc",
+      token: token,
       user: user,
     },
   };
 };
+
+export async function updateUser(user) {
+  try {
+    let response = await fetch(
+      `http://quiz-app-data.herokuapp.com/users/${user.id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(user),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    console.log(response);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export async function postUser(user) {
+  try {
+    let response = await fetch(`http://quiz-app-data.herokuapp.com/users`, {
+      method: "POST",
+      body: JSON.stringify(user),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    console.log(response);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export async function updateGlobalLeader(user) {
+  try {
+    let response = await fetch(
+      `http://quiz-app-data.herokuapp.com/global_ranking/${user.id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(user),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    console.log(response);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export async function postGlobalLeader(user) {
+  try {
+    let response = await fetch(
+      `http://quiz-app-data.herokuapp.com/global_ranking`,
+      {
+        method: "POST",
+        body: JSON.stringify(user),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    console.log(response);
+  } catch (err) {
+    console.error(err);
+  }
+}
