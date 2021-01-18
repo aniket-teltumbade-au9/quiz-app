@@ -11,9 +11,11 @@ const Routing = () => {
         <Switch>
           <Route exact path="/" component={Layout.Home} />
           <Route path="/quiz/:id" component={Layout.QuizPanel} />
+          <Route path="/user/:id/:id2" component={Layout.QuizPanel} />
           <Route path="/login" component={Layout.Login} />
           <Route path="/signup" component={Layout.Signup} />
-          <Route path="/dashboard" />
+          <Route path="/dashboard" component={Layout.UserDashboard} />
+          <Route path="/createquiz" component={Layout.CreateQuiz} />
         </Switch>
         <Layout.Footer />
       </Router>

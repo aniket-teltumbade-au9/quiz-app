@@ -15,6 +15,8 @@ export default function quizReducer(state, action) {
         gLeaderboard: action.payload,
         lbLoaded: true,
       };
+    case "LOADED":
+      return { ...state, qLoaded: false, lbLoaded: false };
     case "USERS":
       return { ...state, users: action.payload, uLoaded: true };
     default:

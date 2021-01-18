@@ -2,9 +2,26 @@ const myApi = "http://quiz-app-data.herokuapp.com/";
 
 export const getQuiz = (id) => {
   const completeURL = `https://opentdb.com/api.php?amount=10&category=${id}&difficulty=easy&type=multiple`;
-  const response = fetch(completeURL, { method: "GET" }).then((res) =>
-    res.json()
-  );
+  let response = [];
+  let apiData = fetch(completeURL, { method: "GET" }).then((res) => res.json());
+  response = apiData.then(function (result) {
+    return result.results;
+  });
+  return {
+    type: "QUIZ_DATA",
+    payload: response,
+  };
+};
+
+export const getUserQuiz = (id, id2) => {
+  let response = [];
+  const apiData = fetch(`http://quiz-app-data.herokuapp.com/users/${id}`, {
+    method: "GET",
+  }).then((res) => res.json());
+  response = apiData.then(function (result) {
+    const data = result.quizList.filter((quiz) => quiz.id == id2);
+    return data[0].quiz;
+  });
   return {
     type: "QUIZ_DATA",
     payload: response,

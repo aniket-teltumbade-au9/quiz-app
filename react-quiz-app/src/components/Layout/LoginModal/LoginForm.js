@@ -37,6 +37,7 @@ class LoginForm extends Component {
         this.props.dispatch(actions.setUser(theUser));
         check = true;
       }
+      return null;
     });
     if (!check) {
       this.setState({
@@ -44,7 +45,7 @@ class LoginForm extends Component {
       });
     } else {
       this.setState({
-        redirect: "/",
+        redirect: "/dashboard",
       });
     }
   };

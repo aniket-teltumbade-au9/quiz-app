@@ -11,12 +11,17 @@ class QuizPanel extends Component {
   componentDidMount() {
     const {
       match: { params },
-      quiz,
     } = this.props;
-    this.props.dispatch(action.getQuiz(params.id));
-    if (!quiz.lbLoaded) {
-      this.props.dispatch(action.getGlobalLeaderBoard());
+    if (this.props.match.url.includes("quiz")) {
+      this.props.dispatch(action.getQuiz(params.id));
     }
+    console.log(this.props.match.url);
+    if (this.props.match.url.includes("user")) {
+      this.props.dispatch({ type: "LOADED" });
+      this.props.dispatch(action.getUserQuiz(params.id, params.id2));
+    }
+
+    this.props.dispatch(action.getGlobalLeaderBoard());
   }
   render() {
     const { qLoaded, lbLoaded, quizList, gLeaderboard } = this.props.quiz;
@@ -27,12 +32,7 @@ class QuizPanel extends Component {
         ) : (
           <div className="row">
             <div className="col-8">
-              {
-                <QuizBoard
-                  quiz={quizList.results}
-                  params={this.props.match.params}
-                />
-              }
+              {<QuizBoard quiz={quizList} params={this.props.match.params} />}
             </div>
             <div className="col-4">
               <LeaderBoard users={this.handlerFunction(gLeaderboard)} />
