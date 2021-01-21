@@ -64,6 +64,39 @@
   padding: 0px 5px;
   height: 245px;
   margin-top: 20px;
+  scrollbar-color: black beige;
+  scrollbar-width: thin;
+}
+
+.quiz-list::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.quiz-list::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+.quiz-list::-webkit-scrollbar-thumb {
+  background: #e1e1e1;
+  border-radius: 50px;
+}
+.quiz-list::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+.quiz-list::-webkit-scrollbar-thumb:active {
+  background: #d66a6a;
+}
+.quiz-list::-webkit-scrollbar-track {
+  background: #fffc88;
+}
+.quiz-list::-webkit-scrollbar-track:hover {
+  background: #9d9dff;
+}
+.quiz-list::-webkit-scrollbar-track:active {
+  background: #131b5e;
+}
+.quiz-list::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 .quiz-list li {
