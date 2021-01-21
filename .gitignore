@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /buid
+/react-quiz-app
 /.pnp
 .pnp.js
 
