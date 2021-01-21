@@ -19,7 +19,7 @@ export const getUserQuiz = (id, id2) => {
     method: "GET",
   }).then((res) => res.json());
   response = apiData.then(function (result) {
-    const data = result.quizList.filter((quiz) => quiz.id == id2);
+    const data = result.quizList.filter((quiz) => quiz.id === id2);
     return data[0].quiz;
   });
   return {
