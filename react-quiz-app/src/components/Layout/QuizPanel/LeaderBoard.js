@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../../css/LeaderBoard.css";
+import { i } from "../../img/profiles";
 
 class LeaderBoard extends Component {
   state = {
@@ -11,6 +12,15 @@ class LeaderBoard extends Component {
       user: this.props.users[0],
     });
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(JSON.stringify(prevProps.users) !== JSON.stringify(this.props.users)){
+      this.setState({
+        user: this.props.users[0],
+      });
+    }
+  }
+
   render() {
     const users = this.props.users;
     const { user } = this.state;
