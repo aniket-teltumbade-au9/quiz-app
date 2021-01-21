@@ -1,5 +1,13 @@
 # Quiz Up Application 
-    
+- [Quiz Up Application](#quiz-up-application)
+    + [Description](#description)
+    + [Live Link](#live-link)
+    + [Technologies](#technologies)
+    + [Features](#features)
+    + [Requirements](#requirements)
+    + [Installation](#installation)
+    + [License](#license)
+   
 ### Description
 > Quiz Up is multiple choice question (objective) quiz web application.
 ### Live Link
@@ -40,3 +48,4 @@ npm start
 ````
 ### License
 - ISC
+
