@@ -11,7 +11,7 @@
 ### Description
 > Quiz Up is multiple choice question (objective) quiz web application.
 ### Live Link
-[https://quiz-up-app.herokuapp.com](https://quiz-up-app.herokuapp.com)
+[https://play-quizup.herokuapp.com](https://play-quizup.herokuapp.com)
 ### Technologies
 - Nodejs
 - Reactjs
